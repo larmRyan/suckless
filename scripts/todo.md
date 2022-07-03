@@ -1,0 +1,28 @@
+# TODO
+
+- vpn_status
+	- [ ] Update the echo statements to echo an image of a lock
+- get_music_info
+	- [x] It's broken, fix it
+		- I think it's fixed, need to test
+	- [ ] Might need to add status function determinede by the current status of the MPD
+- control_music
+	- [ ] test that it works with citypop music
+- create_playlist
+	- [ ] explore mpd playlists
+	- [ ] Python script to take folder and create a playlist from every song in the folder recursively
+- change_audio
+	- [ ] Test that it changes images correctly
+	- [ ] Could be more generic with descriptions
+		- Parse the grep output list
+- fonts
+	- [ ] Icon image pack
+	- [ ] Font for dashboard greeting
+	- [ ] Download fonts (saved some from google)
+		- [ ] Update the fonts folder in .config
+- Scripts to make
+	- [ ] volume_control / display
+	- [ ] weather
+	- [ ] workspaces
+	- [ ] power_control
+	- [ ] date / time

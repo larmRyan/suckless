@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+
+
+get_status() {
+	status=`mullvad status | grep Disconnected`
+	if [[ -z $status ]]; then
+		echo "images/icons/lock.svg"
+	else
+		echo "images/icons/unlock.svg"
+	fi
+}
+
+enable_vpn() {
+	mullvad connect
+}
+
+disable_vpn() {
+	mullvad disconnect
+}
+
+if [[ "$1" == "--status" ]]; then
+	get_status
+elif [[ "$1" == "--connect" ]]; then
+	enable_vpn; sleep 2; get_status
+elif [[ "$1" = "--disconnect" ]]; then
+	disable_vpn; sleep 2; get_status
+fi

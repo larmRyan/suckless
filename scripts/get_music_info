@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Queries MPC for information about current playing song
+# Ripped from: https://github.com/adi1090x/widgets/blob/main/eww/arin/scripts/music_info
+
+get_artist() {
+	artist=`mpc -f %artist% current`
+	if [[ -z "$artist" ]]; then
+		echo "Offline"
+	else
+		echo "$artist"
+	fi
+}
+
+get_song() {
+	song=`mpc -f %title% current`
+	if [[ -z "$song" ]]; then
+		echo "Offline"
+	else
+		echo "$song"
+	fi
+}
+
+get_cover() {
+	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
+	STATUS=$?
+
+	# Check if the file has a embbeded album art
+	if [ "$STATUS" -eq 0 ]; then
+		echo "$COVER"
+	else
+		echo "images/music.png"
+	fi
+}
+
+if [[ "$1" == "--cover" ]]; then
+	get_cover
+elif [[ "$1" == "--song" ]]; then
+	get_song
+elif [[ "$1" == "--artist" ]]; then
+	get_artist
+fi
+

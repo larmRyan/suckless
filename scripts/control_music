@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Controls current playing song through MPC
+# Based on: https://github.com/adi1090x/widgets/blob/main/eww/arin/scripts/music_info
+
+next() {
+	mpc -q next; ./get_music_info --cover
+}
+
+prev() {
+	mpc -q prev; ./get_music_info --cover
+}
+
+toggle() {
+	mpc -q toggle
+}
+
+if [[ "$1" == "--next" ]]; then
+	next
+elif [[ "$1" == "--prev" ]]; then
+	prev
+elif [[ "$1" == "--toggle" ]]; then
+	toggle
+fi
